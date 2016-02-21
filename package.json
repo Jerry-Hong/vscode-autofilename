@@ -3,7 +3,7 @@
 	"displayName": "AutoFileName",
 	"description": "auto complete file name",
 	"version": "0.0.1",
-	"publisher": "Jerry Hong",
+	"publisher": "JerryHong",
 	"engines": {
 		"vscode": "^0.10.6"
 	},
