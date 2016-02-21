@@ -2,7 +2,7 @@
 	"name": "autofilename",
 	"displayName": "AutoFileName",
 	"description": "auto complete file name",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "JerryHong",
 	"engines": {
 		"vscode": "^0.10.6"
