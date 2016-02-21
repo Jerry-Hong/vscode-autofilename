@@ -16,24 +16,14 @@ export function activate(context: vscode.ExtensionContext) {
  */
 class CompleteProvider implements vscode.CompletionItemProvider{
     provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Thenable<vscode.CompletionItem[]>{
-
-        var currentPath = getCurrentPath(document.fileName);
-        let str = '';
-        let line = document.lineAt(position);
-        console.log(line);
-        var lineText = document.getText(line.range);
-        if(lineText.lastIndexOf('\'') > lineText.lastIndexOf('"')){
-            var tempArr = lineText.substr(0, position.character).split('\'');  
-        }else {
-            var tempArr = lineText.substr(0, position.character).split('"');
-        }
-        str = tempArr[tempArr.length - 1];
-        console.log(str);
-        
-        let src = resolve(currentPath, str);
+        const currentPath = getCurrentPath(document.fileName);
+        const lineAt = document.lineAt(position);
+        const lineText = document.getText(lineAt.range);     
+        let userKeyInStr = getUserKeyIn(lineText, position.character);
+        let finalPath = resolve(currentPath, userKeyInStr);
         return new Promise((resolve, reject) => {
             let items: vscode.CompletionItem[];
-            readdir(src, (err, data) => {
+            readdir(finalPath, (err, data) => {
                 if(err){
                     resolve([]);                    
                 } else {
@@ -47,6 +37,16 @@ class CompleteProvider implements vscode.CompletionItemProvider{
             });
         });
     }
+}
+
+function getUserKeyIn(lineText: string, toCharacter: number): string {
+    let tempArr = [];
+    if(lineText.lastIndexOf('\'') > lineText.lastIndexOf('"')){
+        tempArr = lineText.substr(0, toCharacter).split('\'');  
+    }else {
+        tempArr = lineText.substr(0, toCharacter).split('"');
+    }
+    return tempArr[tempArr.length - 1];
 }
 
 function getCurrentPath(fileName: string): string {
