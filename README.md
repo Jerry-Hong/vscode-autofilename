@@ -1,13 +1,10 @@
 # README
-## This is the README for your extension "autofilename" 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+## install it
+[see here](https://code.visualstudio.com/docs/editor/extension-gallery)
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
+`ext install AutoFileName`
 
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+### How to use
+![demo](https://trello-attachments.s3.amazonaws.com/56c86fd76bf599f4fa62ee7f/1152x720/4b439177b0fb1c04af133aa733ba2a09/Untitled.gif)
 
 ** Enjoy!**
