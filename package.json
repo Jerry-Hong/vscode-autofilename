@@ -13,6 +13,11 @@
 	"activationEvents": [
 		"*"
 	],
+    "bugs": {
+        "url": "https://github.com/s6323859/vscode-autofilename/issues",
+        "email": "s6323859@hotmail.com"
+    },
+    "homepage": "https://github.com/s6323859/vscode-autofilename",
     "keywords":["autoComplete", "File"],
 	"main": "./out/src/extension",
 	"scripts": {
