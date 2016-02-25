@@ -3,7 +3,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { readdir } from 'fs';
-import { resolve } from 'path';
+import { resolve, sep } from 'path';
 
 export function activate(context: vscode.ExtensionContext) {
     var completeProvider = new CompleteProvider();
@@ -50,7 +50,8 @@ function getUserKeyIn(lineText: string, toCharacter: number): string {
 }
 
 function getCurrentPath(fileName: string): string {
-    var pathArray = fileName.split('/');
+    var pathArray = fileName.split(sep);
+    pathArray.unshift('/');
     pathArray.pop();
     return resolve.apply(null, pathArray);
 }
