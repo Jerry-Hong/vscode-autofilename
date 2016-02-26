@@ -1,9 +1,9 @@
 {
 	"name": "autofilename",
-    "icon": "images/logo_afn1.svg",
+    "icon": "images/logo_afn2.svg",
 	"displayName": "AutoFileName",
 	"description": "auto complete file name",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"publisher": "JerryHong",
 	"engines": {
 		"vscode": "^0.10.6"

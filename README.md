@@ -9,6 +9,9 @@
 
 ## If there is any bug, give me an issue on [github](https://github.com/s6323859/vscode-autofilename) please.
 
+### 0.0.7
+Change icon
+
 ### 0.0.6
 Add icon
 
