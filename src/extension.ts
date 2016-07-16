@@ -25,17 +25,19 @@ class CompleteProvider implements vscode.CompletionItemProvider{
         let userKeyInStr = getUserKeyIn(lineText, position.character);
         let finalPath = resolve(currentPath, userKeyInStr);
         return new Promise((resolve, reject) => {
-            readdir(finalPath, (err, data) => {
-                console.log(data);
-                if(err){
-                    reject();                    
-                } else {
-                    data.unshift(''); // hack .ts file, first one is empty string and it will be correct when user typing dot 
-                    resolve(data
-                        .filter(item => item[0] !== '.')
-                        .map(item => new vscode.CompletionItem(item, vscode.CompletionItemKind.File))
-                    );
-                }
+            fs.access(finalPath, fs.F_OK, (err) => {
+                const realPath = err ? getCurrentPath(finalPath): finalPath;
+                fs.readdir(realPath, (err, data) => {
+                    if(err){
+                        reject();                    
+                    } else {
+                        data.unshift(''); // hack .ts file, first one is empty string and it will be correct when user typing dot 
+                        resolve(data
+                            .filter(item => item[0] !== '.')
+                            .map(item => new vscode.CompletionItem(item, vscode.CompletionItemKind.File))
+                        );
+                    }
+                });
             });
         });
     }
