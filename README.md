@@ -9,25 +9,7 @@
 
 ## If there is any bug, give me an issue on [github](https://github.com/s6323859/vscode-autofilename) please.
 
-### 0.0.7
-Change icon
-
-### 0.0.6
-Add icon
-
-### 0.0.5
-Edit README
-
-### 0.0.4
-**Fixed Bug!**
-
-### 0.0.3
-Add home page into package.json
-
-###0.0.2
-Add README
-
-###0.0.1
-Complete feature!
+### 0.1.3
+Fix for Windows  
 
 ** Enjoy!**

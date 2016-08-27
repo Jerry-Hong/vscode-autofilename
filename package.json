@@ -3,7 +3,7 @@
   "icon": "images/logo_afn2.svg",
   "displayName": "AutoFileName",
   "description": "auto complete file name",
-  "version": "0.0.7",
+  "version": "0.1.3",
   "publisher": "JerryHong",
   "engines": {
     "vscode": "^0.10.6"
