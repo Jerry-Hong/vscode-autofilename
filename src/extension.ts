@@ -49,7 +49,7 @@ function getUserKeyIn(lineText: string, toCharacter: number): string {
     return tempArr[tempArr.length - 1];
 }
 
-const getCurrentPath = (fileName: string) => fileName.substring(0, fileName.lastIndexOf('/'));
+const getCurrentPath = (fileName: string) => fileName.substring(0, fileName.lastIndexOf(path.sep));
 
 // this method is called when your extension is deactivated
 export function deactivate() {
