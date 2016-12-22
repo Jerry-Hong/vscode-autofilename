@@ -32,5 +32,21 @@
   "devDependencies": {
     "typescript": "^1.7.5",
     "vscode": "^0.11.14"
+  },
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "AutoFileName configuration",
+      "properties": {
+        "autofilename.extensions.trim": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Trim the specified file extensions."
+        }
+      }
+    }
   }
 }
