@@ -13,7 +13,16 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 }
 
-const extensions = vscode.workspace.getConfiguration('autofilename.extensions');
+let configExtensionsTrim: Array<string> = [];
+try {
+    function updateConfigExtensionsTrim () {
+        configExtensionsTrim = vscode.workspace.getConfiguration('autofilename.extensions').get('trim', []);
+    }
+    updateConfigExtensionsTrim();
+    vscode.workspace.onDidChangeConfiguration(updateConfigExtensionsTrim);
+} catch (ex) {
+    configExtensionsTrim = [];
+}
 
 /**
  *  CompleteProvider
@@ -36,8 +45,8 @@ class CompleteProvider implements vscode.CompletionItemProvider{
                             .filter(name => name[0] !== '.')
                             .map(name => {
                                 const extn = name.includes('.') ? name.substring(name.lastIndexOf('.') + 1) : ''
-                                if (extn !== '' && (extensions.get('trim') as Array<string>).some(item => item.localeCompare(extn, 'en', { sensitivity: 'accent' }) === 0)) {
-                                    name = name.substring(0, name.lastIndexOf('.js'));
+                                if (extn !== '' && configExtensionsTrim.some(item => item.localeCompare(extn, 'en', { sensitivity: 'accent' }) === 0)) {
+                                    name = name.substring(0, name.length - extn.length - 1);
                                 }
                                 const item = new vscode.CompletionItem(name);
                                 item.kind = vscode.CompletionItemKind.File;
