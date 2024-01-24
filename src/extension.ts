@@ -13,7 +13,6 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 }
 
-const extensions = vscode.workspace.getConfiguration('autofilename.extensions');
 
 /**
  *  CompleteProvider
@@ -33,16 +32,8 @@ class CompleteProvider implements vscode.CompletionItemProvider{
                     } else {
                         data.unshift(''); // hack .ts file, first one is empty string and it will be correct when user typing dot 
                         resolve(data
-                            .filter(name => name[0] !== '.')
-                            .map(name => {
-                                const extn = name.includes('.') ? name.substring(name.lastIndexOf('.') + 1) : ''
-                                if (extn !== '' && (extensions.get('trim') as Array<string>).some(item => item.localeCompare(extn, 'en', { sensitivity: 'accent' }) === 0)) {
-                                    name = name.substring(0, name.lastIndexOf('.js'));
-                                }
-                                const item = new vscode.CompletionItem(name);
-                                item.kind = vscode.CompletionItemKind.File;
-                                return item;
-                            })
+                            .filter(item => item[0] !== '.')
+                            .map(item => new vscode.CompletionItem(item, vscode.CompletionItemKind.File))
                         );
                     }
                 });
